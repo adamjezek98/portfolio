@@ -1,0 +1,86 @@
+<div style="height: auto"></div>
+<div class="content" id="about" style="margin-top: 50px">
+    <div class="content_background" style="background-image: url('images/mcu_back.jpg')">
+        <div class="header"><?= $this->labels["about"] ?></div>
+        <div class="center_panel" id="about">
+            <?= $this->content["about"] ?>
+        </div>
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+<div class="content" id="reference">
+    <div class="content_background" style="background-image: url('images/code_back.jpg')">
+        <div class="header"><?= $this->labels["references"] ?></div>
+        <div class="left_panel-top">
+            <?= $this->content["references"] ?>
+        </div>
+        <div class="right_panel-bottom"> <?= $this->content["references"] ?></div>
+    </div>
+
+</div>
+<div style="clear: both;"></div>
+
+<div class="content" id="kontakty">
+
+    <div class="header"><?= $this->labels["contacts"] ?></div>
+    <div class="center_panel">
+
+        <form id="contact_form" method="POST">
+            <div><?= $this->content["contact_me"] ?></div>
+            <br/>
+            <?php
+            $col = "transparent";
+            $msg = "";
+            if (isset($_POST["email_ok"])) {
+                if ($_POST["email_ok"] == "true") {
+                    $col = "green";
+                    $msg = $this->content["email_ok"];
+                } else {
+                    $col = "red";
+                    $msg = $this->content["email_nok"];
+                }
+            }
+            ?>
+            <div style="color: <?= $col ?>; text-align: center;"><strong><?= $msg ?></strong></div>
+            <label for="name" class="form_left"><?= $this->content["your_name"] ?></label>
+            <input id="name" class="form_right" name="name" type="text"
+                   value="<?php if (isset($_POST["name"])) echo(htmlspecialchars($_POST['name'])) ?>"
+                   required="required"/><br/>
+            <div style="clear: both;"></div>
+            <label for="email" class="form_left"><?= $this->content["your_email"] ?></label>
+            <input id="email" class="form_right" name="email" type="text" pattern="[^ @]*@[^ @]*"
+                   value="<?php if (isset($_POST["email"])) echo(htmlspecialchars($_POST['email'])) ?>"
+                   required="required"/><br/>
+            <div style="clear: both;"></div>
+            <label for="antispam" class="form_left"><?= $this->content["antispam"] ?></label>
+            <input id="antispam" class="form_right" name="antispam" type="text" required="required"/><br/>
+            <div style="clear: both;"></div>
+            <label for="message" class="form_left"><?= $this->content["your_message"] ?></label>
+            <textarea id="message" class="form_right" name="message" style="min-height:100px"
+                      required="required"><?php if (isset($_POST["message"])) echo(htmlspecialchars($_POST['message'])) ?></textarea>
+            <div style="clear: both;"></div>
+            <div style="text-align: center">
+                <input id="submit_button" type="submit" value="<?= $this->content["send_email"] ?>"
+                       class="center_button"/>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<?php
+if (isset($_POST['email_ok'])) {
+    echo('<script>
+   
+        document.getElementById("kontakty").scrollIntoView(true);
+
+    </script>');
+} ?>
+
+<div style="clear: both;"></div>
+
+
+
+
+

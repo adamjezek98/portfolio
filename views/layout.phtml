@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/portfolio"/>
+    <script src="js/jQuery.min.js"></script>
+    <script src="js/jQuery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/FontAwesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <title><?= $title ?></title>
+</head>
+<body>
+
+<nav class="menu" id="menu">
+    <div class="menu__wrapper">
+        <h1 class="menu__nadpis"><a class="menu__nadpis--a" href="/home#home">Adam Ježek</a></h1>
+        <button id="tlacitko-telefon" class="menu__TelefonTlacitko"><i class="fa fa-bars"></i></button>
+        <div class="menu__pc-telefon--overeni"></div>
+        <div class="menu__telefon">
+            <ul class="menu__ul menu__hlavniMenu">
+                <li class="menu__polozka"><a class="menu__odkaz"
+                                             href="<?= $this->lang ?>/home#home"></i> <?= $labels["about"] ?> </a>
+                </li>
+                <li class="menu__polozka"><a class="menu__odkaz" href="<?= $this->lang ?>/home#reference"></i>
+                        <?= $labels["references"] ?> </a></li>
+                <li class="menu__polozka"><a class="menu__odkaz" href="<?= $this->lang ?>/home#kontakty"></i>
+                        <?= $labels["contacts"] ?> </a></li>
+                <li class="menu__polozka"><a class="menu__odkaz" href="http://blog.ajezek.cz/<?= $this->lang ?>"></i>
+                        <?= $labels["blog"] ?> </a></li>
+                <li class="menu__polozka"><a class="menu__odkaz"
+                                             href="<?= $this->lang ?>/cv"></i><?= $labels["cv"] ?> </a></li>
+            </ul>
+            <?php
+            $ln = "cs";
+            $lntx = "CZ";
+            if ($this->lang == "cs") {
+                $ln = "en";
+                $lntx = "ENG";
+            }
+            ?>
+            <a href="http://portfolio/<?= $ln ?>" class="menu__odkaz" style="float:right"><?= $lntx ?></a>
+        </div>
+    </div>
+</nav>
+<script type="text/javascript" src="js/menu.js"></script>
+<article>
+    <div style="height: 1px;"></div>
+    <?php $this->controller->printView();  // vložení aktuálního pohledu do šablony ?>
+    <div style="clear: both;"></div>
+</article>
+<div style="min-height: 60px"></div>
+<footer>
+    <!--<div class=" "> &copy Adam Ježek 2017, mail@ajezek.cz, responzive menu by SogoCZE</div>-->
+</footer>
+</body>
+</html>

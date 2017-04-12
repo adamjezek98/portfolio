@@ -1,0 +1,120 @@
+@font-face {
+  font-family: track;
+  src: url("../css/font/Track.svg") format("opentype");
+  src: url("../css/font/Track.eot") format("eot"), url("font/Track.woff") format("woff"), url("font/Track.svg") format("svg"), url("font/Track.ttf") format("truetype"); }
+body {
+  background-color: #4799eb;
+  /*
+  background-image: url("../images/mcu_back.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;*/ }
+
+.content {
+  margin: 0px;
+  opacity: 1; }
+  .content .content_background {
+    margin: 0px;
+    padding: 0px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 0 1000px rgba(71, 153, 235, 0.6);
+    width: 100%;
+    height: 100%;
+    overflow: auto; }
+  .content .header {
+    opacity: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    color: yellow;
+    font-family: track; }
+  .content .left_panel-top {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px 0px 0px; }
+    @media screen and (min-width: 900px) {
+      .content .left_panel-top {
+        width: 49%;
+        float: left; } }
+  .content .right_panel-bottom {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px 0px 0px; }
+    @media screen and (min-width: 900px) {
+      .content .right_panel-bottom {
+        width: 49%;
+        float: right; } }
+  .content .left_panel-bottom {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px 0px 0px; }
+    @media screen and (min-width: 900px) {
+      .content .left_panel-bottom {
+        width: 49%;
+        float: right; } }
+  .content .center_panel {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px 0px 0px; }
+  .content .right_panel-top {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px 0px 0px; }
+    @media screen and (min-width: 900px) {
+      .content .right_panel-top {
+        width: 49%;
+        float: left; } }
+
+form .form_left {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px;
+  margin-left: 0px; }
+  @media screen and (min-width: 900px) {
+    form .form_left {
+      width: auto;
+      float: left; } }
+form .form_right {
+  margin: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border-color: yellow;
+  border-radius: 10px;
+  padding: 2px;
+  padding-left: 5px; }
+  @media screen and (min-width: 900px) {
+    form .form_right {
+      width: calc(100% - 150px);
+      float: right; } }
+form .center_button {
+  padding: 5px;
+  box-sizing: border-box;
+  width: auto;
+  text-align: center;
+  left: 50%;
+  color: yellow;
+  padding: 10px;
+  font-family: track;
+  background-color: #1980e6;
+  border-color: yellow;
+  border-radius: 10px; }
+
+footer {
+  margin: 0px;
+  background-color: #1980e6;
+  clear: both;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  color: #ffff00;
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */
