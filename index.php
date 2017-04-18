@@ -7,6 +7,9 @@
  */
 mb_internal_encoding("UTF-8");
 
+//vypnuti chyb na produkci
+error_reporting(0);
+
 function autoloadFunkce($trida)
 {
 

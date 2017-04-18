@@ -1,72 +1,147 @@
 <div style="height: auto"></div>
 <div class="content" id="about" style="margin-top: 50px">
-    <div class="content_background" style="background-image: url('images/mcu_back.jpg')">
-        <div class="header"><?= $this->labels["about"] ?></div>
-        <div class="center_panel" id="about">
-            <?= $this->content["about"] ?>
+    <div class="content_background content_background_odd">
+        <div class="content_wrapper">
+            <h1><?= $this->labels["about"] ?></h1>
+            <div class="center_panel">
+                <?= $this->content["about"] ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+<div class="content" id="abilities">
+    <div class="content_background content_background_even" style="background-image: url('/images/code_back.jpg')">
+        <div class="content_wrapper">
+            <h1><?= $this->labels["abilities"] ?></h1>
+            <div id="wrapper">
+                <?php foreach ($this->content["abilities"] as $nazev => $obsah) { ?>
+                    <div>
+
+                        <img src="/icon/<?= $nazev ?>.png" class="image_cropper"/>
+                        <p><?= $obsah ?></p></div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>
 
 <div style="clear: both;"></div>
 <div class="content" id="reference">
-    <div class="content_background" style="background-image: url('images/code_back.jpg')">
-        <div class="header"><?= $this->labels["references"] ?></div>
-        <div class="left_panel-top">
-            <?= $this->content["references"] ?>
+    <div class="content_background content_background_odd">
+        <div class="content_wrapper">
+            <h1><?= $this->labels["references"] ?></h1>
+            <?php
+            $i = 0;
+            foreach ($this->content["references"] as $nazev => $reference){
+            if ($i % 2 == 0){
+            ?>
+            <div class="left_panel"
+                 style="<?php if ($i < 2) { ?>visibility: visible; position: inherit;<?php } else { ?>visibility: hidden; position: absolute;<?php } ?>"
+                 id="referencecontent<?= $i ?>">
+                <?php
+                } else {
+                ?>
+                <div class="right_panel"
+                     style="<?php if ($i < 2) { ?>visibility: visible; position: inherit;<?php } else { ?>visibility: hidden; position: absolute;<?php } ?>"
+                     id="referencecontent<?= $i ?>">
+                    <?php
+                    }
+
+                    ?>
+                    <div class="reference_header"><?= $nazev ?></div>
+                    <?php if ($i % 2 == 0) { ?>
+                        <div class="arrow-left-desktop" onclick="shiftLeft(true)"></div>
+                    <?php } else { ?>
+                        <div class="arrow-right-dekstop" onclick="shiftLeft(true)"></div>
+
+                    <?php } ?>
+                    <?= $reference ?>
+                </div>
+                <?php if ($i % 2 == 1) { ?>
+                    <div style="clear: both;"></div>
+
+                <?php } ?>
+                <?php if ($i == sizeof($this->content["references"]) - 1) { ?>
+                    <div class="cleaner"></div>
+                    <div class="arrow-left-mobile" onclick="shiftLeft(true)"></div>
+                    <div class="arrow-right-mobile" onclick="shiftLeft(true)"></div>
+                   <div class="pause" onclick="playpause()" id="playpausebutton"></div>
+                    <div class="cleaner"></div>
+
+                <?php } ?>
+
+                <?php
+                $i++;
+                } ?>
+
         </div>
-        <div class="right_panel-bottom"> <?= $this->content["references"] ?></div>
+
+        </div>
     </div>
 
+    <script type="text/javascript" src="/scripts/reference_scroll.js">
+    </script>
+    <script>
+        setTimeout(shiftRight, delay);
+    </script>
+
 </div>
+
 <div style="clear: both;"></div>
 
 <div class="content" id="kontakty">
+    <div class="content_background content_background_even">
+        <div class="content_wrapper">
+            <h1><?= $this->labels["contacts"] ?></h1>
+            <div class="center_panel">
 
-    <div class="header"><?= $this->labels["contacts"] ?></div>
-    <div class="center_panel">
+                <form id="contact_form" method="POST">
+                    <div><?= $this->content["contact_me"] ?></div>
+                    <br/>
+                    <?php
+                    $col = "transparent";
+                    $msg = "";
+                    if (isset($_POST["email_ok"])) {
+                        if ($_POST["email_ok"] == "true") {
+                            $col = "green";
+                            $msg = $this->content["email_ok"];
+                        } else {
+                            $col = "red";
+                            $msg = $this->content["email_nok"];
+                        }
+                    }
+                    ?>
+                    <div style="color: <?= $col ?>; text-align: center;"><strong><?= $msg ?></strong></div>
+                    <div class="form_wrapper">
+                        <!--<label for="name" class="form_left"></label>-->
+                        <input id="name" class="input_name" name="name" type="text"
+                               value="<?php if (isset($_POST["name"])) echo(htmlspecialchars($_POST['name'])) ?>"
+                               required="required" placeholder="<?= $this->content["your_name"] ?>"/>
 
-        <form id="contact_form" method="POST">
-            <div><?= $this->content["contact_me"] ?></div>
-            <br/>
-            <?php
-            $col = "transparent";
-            $msg = "";
-            if (isset($_POST["email_ok"])) {
-                if ($_POST["email_ok"] == "true") {
-                    $col = "green";
-                    $msg = $this->content["email_ok"];
-                } else {
-                    $col = "red";
-                    $msg = $this->content["email_nok"];
-                }
-            }
-            ?>
-            <div style="color: <?= $col ?>; text-align: center;"><strong><?= $msg ?></strong></div>
-            <label for="name" class="form_left"><?= $this->content["your_name"] ?></label>
-            <input id="name" class="form_right" name="name" type="text"
-                   value="<?php if (isset($_POST["name"])) echo(htmlspecialchars($_POST['name'])) ?>"
-                   required="required"/><br/>
-            <div style="clear: both;"></div>
-            <label for="email" class="form_left"><?= $this->content["your_email"] ?></label>
-            <input id="email" class="form_right" name="email" type="text" pattern="[^ @]*@[^ @]*"
-                   value="<?php if (isset($_POST["email"])) echo(htmlspecialchars($_POST['email'])) ?>"
-                   required="required"/><br/>
-            <div style="clear: both;"></div>
-            <label for="antispam" class="form_left"><?= $this->content["antispam"] ?></label>
-            <input id="antispam" class="form_right" name="antispam" type="text" required="required"/><br/>
-            <div style="clear: both;"></div>
-            <label for="message" class="form_left"><?= $this->content["your_message"] ?></label>
-            <textarea id="message" class="form_right" name="message" style="min-height:100px"
-                      required="required"><?php if (isset($_POST["message"])) echo(htmlspecialchars($_POST['message'])) ?></textarea>
-            <div style="clear: both;"></div>
-            <div style="text-align: center">
-                <input id="submit_button" type="submit" value="<?= $this->content["send_email"] ?>"
-                       class="center_button"/>
+                        <!--<label for="email" class="form_left"></label>-->
+                        <input id="email" class="input_email" name="email" type="text" pattern="[^ @]*@[^ @]*"
+                               value="<?php if (isset($_POST["email"])) echo(htmlspecialchars($_POST['email'])) ?>"
+                               required="required" placeholder="<?= $this->content["your_email"] ?>"/>
+
+                        <!--<label for="antispam" class="form_left"></label>-->
+                        <input id="antispam" class="input_antispam" name="antispam" type="text" required="required" placeholder="<?= $this->content["antispam"] ?>"/>
+
+                    </div>
+                    <!--<label for="message" class="form_left"></label>-->
+                    <textarea id="message" class="" name="message" style="min-height:100px"
+                              required="required" placeholder="<?= $this->content["your_message"] ?>"><?php if (isset($_POST["message"])) echo(htmlspecialchars($_POST['message'])) ?></textarea>
+                    <div style="clear: both;"></div>
+                    <div style="text-align: center">
+                        <input id="submit_button" type="submit" value="<?= $this->content["send_email"] ?>"
+                               class="center_button"/>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div style="min-height: 60px"></div>
+        </div>
     </div>
-
 
 </div>
 <?php
@@ -79,6 +154,9 @@ if (isset($_POST['email_ok'])) {
 } ?>
 
 <div style="clear: both;"></div>
+
+
+
 
 
 

@@ -41,7 +41,7 @@ abstract class Controller
     // Přesměruje na dané URL
     public function forward($url)
     {
-        echo "forwarding ".$url;
+        //echo "forwarding ".$url;
         header("Location: /$url");
         header("Connection: close");
         exit;

@@ -8,25 +8,17 @@
  */
 class GetMenulabels
 {
+
     public function Get($lang)
     {
+        require("dbconf.php");
 
-
-
-        if ($lang == "cs") {
-            $labels["about"] = "O mě";
-            $labels["references"] = "Reference";
-            $labels["contacts"] = "Kontakt";
-            $labels["blog"] = "blog";
-            $labels["cv"] = "Životopis";
-        } elseif ($lang == "en") {
-            $labels["about"] = "About me";
-            $labels["references"] = "References";
-            $labels["contacts"] = "Contacts";
-            $labels["blog"] = "blog";
-            $labels["cv"] = "cv";
+        $command = $dbconn->prepare("SELECT name, content FROM labels WHERE lang='$lang'"); //
+        $command->execute();
+        $res = $command->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($command as $com) {
+            $labels[$com["name"]] = $com["content"];
         }
-
 
         return $labels;
     }

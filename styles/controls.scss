@@ -1,0 +1,114 @@
+.arrow-right-dekstop {
+   margin: 15px;
+   width: 0;
+   height: 0;
+   border-top: 20px solid transparent;
+   border-bottom: 20px solid transparent;
+   float: right;
+   border-left: 20px solid $text-color-menu;
+   cursor: pointer;
+   position: absolute;
+   visibility: hidden;
+   @media screen and (min-width: 900px) {
+     position: relative;
+     visibility: inherit;
+   }
+ }
+
+.arrow-left-desktop {
+  margin: 15px;
+  width: 0px;
+  height: 0px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  float: left;
+  border-right: 20px solid $text-color-menu;
+  cursor: pointer;
+  position: absolute;
+  visibility: hidden;
+  @media screen and (min-width: 900px) {
+    position: relative;
+    visibility: inherit;
+  }
+
+}
+
+.arrow-right-mobile {
+  margin: 15px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  float: right;
+  border-left: 20px solid $text-color-menu;
+  cursor: pointer;
+  position: relative;
+  visibility: inherit;
+  @media screen and (min-width: 900px) {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+
+.arrow-left-mobile {
+  margin: 15px;
+  width: 0px;
+  height: 0px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  float: left;
+  border-right: 20px solid $text-color-menu;
+  cursor: pointer;
+  position: relative;
+  visibility: inherit;
+  @media screen and (min-width: 900px) {
+    position: absolute;
+    visibility: hidden;
+  }
+
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-bottom: 20px solid $text-color-menu;
+  cursor: pointer;
+
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  cursor: pointer;
+
+  border-top: 20px solid $text-color-menu;
+}
+
+.pause {
+
+  width: 8px;
+  height: 30px;
+  border-right: 4px solid $text-color-menu;
+  border-left: 4px solid $text-color-menu;
+  margin-left: calc(50% - 16px);
+
+  cursor: pointer;
+
+}
+
+.play {
+  width: 0;
+  height: 0;
+  border-top: 16px solid transparent;
+  border-left: 28px solid $text-color-menu;
+  border-bottom: 16px solid transparent;
+  cursor: pointer;
+
+  margin-left: calc(50% - 20px);
+  margin-top: 20px;
+}

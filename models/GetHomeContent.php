@@ -15,40 +15,33 @@ class GetHomeContent
 
 In placerat ex id risus dictum bibendum. Nulla facilisi. Praesent vulputate elit eros, eu consectetur quam pellentesque maximus. Curabitur mollis, tortor non aliquam auctor, justo quam posuere dolor, ut feugiat lacus odio quis lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc placerat erat eget lacus hendrerit, quis tristique metus tempus. Phasellus gravida, dui eu laoreet convallis, ante sapien accumsan risus, vel aliquam augue enim eu dui. Suspendisse scelerisque metus bibendum augue faucibus, non cursus purus porta. In eget tristique purus, quis finibus massa. Nunc ut risus nec sapien luctus condimentum. Sed ultrices ex dignissim lacus viverra, vitae aliquet orci facilisis.";
 
+    $content = array();
 
-        if ($lang == "cs") {
-            $content["about"] = $lorips;//"aboutcontent";
-            $content["references"] = $lorips;//"Referencecontent";
-            $content["contacts"] = $lorips;//"Kontaktycontent";
-            $content["blog"] = $lorips;//"blogcontent";
-            $content["cv"] = $lorips;//"Životopiscontent";
+        require("dbconf.php");
 
-            //email form
-            $content["contact_me"] = "Kontaktujte mě pomocí formuláře níže nebo přímo na mail@ajezek.cz";
-            $content["your_name"] = "Vaše jméno";
-            $content["your_email"] = "Váš email";
-            $content["your_message"] = "Vaše zpráva";
-            $content["send_email"] = "Odeslat zprávu";
-            $content["email_ok"] = "Úspěšně odesláno";
-            $content["email_nok"] = "Někde se stala chyba. Zkontrolujte údaje a zkuste to prosím znovu";
-            $content["antispam"] = "(antispam) 2+2=";
-        } elseif ($lang == "en") {
-            $content["about"] = "About me";
-            $content["references"] = "References";
-            $content["contacts"] = "Contacts";
-            $content["blog"] = "blog";
-            $content["cv"] = "cv";
-
-            //email form
-            $content["contact_me"] = "You can contact me using the form bellow, or directly by emailing me at mail@ajezek.cz";
-            $content["your_name"] = "Your name";
-            $content["your_email"] = "Your email";
-            $content["your_message"] = "Your message";
-            $content["send_email"] = "Send message";
-            $content["email_ok"] = "Successfully sent";
-            $content["email_nok"] = "Something got wrong. Check entered data and try again";
-            $content["antispam"] = "(antispam) 2+2=";
+        $command = $dbconn->prepare("SELECT name, content FROM homestrings WHERE lang='$lang'"); //
+        $command->execute();
+        $res = $command->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($command as $com) {
+            $content[$com["name"]] = $com["content"];
         }
+
+
+
+        $command = $dbconn->prepare("SELECT header, content FROM refs WHERE lang='$lang'"); //
+        $command->execute();
+        $res = $command->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($command as $com) {
+            $content["references"][$com["header"]] = $com["content"];
+        }
+
+        $command = $dbconn->prepare("SELECT header, content FROM abilities WHERE lang='$lang'"); //
+        $command->execute();
+        $res = $command->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($command as $com) {
+            $content["abilities"][$com["header"]] = $com["content"];
+        }
+
 
 
         return $content;
