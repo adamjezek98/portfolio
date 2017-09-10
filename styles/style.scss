@@ -14,6 +14,8 @@ $button-hover: rgb(105, 160, 230);
 
 @import "menu";
 @import "controls";
+@import "../css/font-awesome.css";
+@import "../css/FontAwesome/css/font-awesome.min.css";
 
 #wrapper {
   display: flex; /* Magic begins */
