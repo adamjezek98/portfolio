@@ -102,3 +102,5 @@ function playpause() {
     }
     loop = !loop;
 }
+
+setTimeout(shiftRight, delay);
