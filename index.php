@@ -27,7 +27,11 @@ function autoloadFunkce($trida)
 // Registrace callbacku (Pod starým PHP 5.2 je nutné nahradit fcí __autoload())
 spl_autoload_register("autoloadFunkce");
 
-
+//cache-control
+Header("Cache-Control: must-revalidate");
+$offset = 60 * 60 * 24 * 7;
+$ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
+Header($ExpStr);
 
 $forwarder = new ForwarderController();
 $forwarder->process(array($_SERVER['REQUEST_URI']));
