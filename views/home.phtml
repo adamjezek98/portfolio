@@ -113,21 +113,21 @@
                     ?>
                     <div style="color: <?= $col ?>; text-align: center;"><strong><?= $msg ?></strong></div>
                     <div class="form_wrapper">
-                        <!--<label for="name" class="form_left"></label>-->
+
                         <input id="name" class="input_name" name="name" type="text"
                                value="<?php if (isset($_POST["name"])) echo(htmlspecialchars($_POST['name'])) ?>"
                                required="required" placeholder="<?= $this->content["your_name"] ?>"/>
 
-                        <!--<label for="email" class="form_left"></label>-->
+
                         <input id="email" class="input_email" name="email" type="text" pattern="[^ @]*@[^ @]*"
                                value="<?php if (isset($_POST["email"])) echo(htmlspecialchars($_POST['email'])) ?>"
                                required="required" placeholder="<?= $this->content["your_email"] ?>"/>
 
-                        <!--<label for="antispam" class="form_left"></label>-->
+
                         <input id="antispam" class="input_antispam" name="antispam" type="text" required="required" placeholder="<?= $this->content["antispam"] ?>"/>
 
                     </div>
-                    <!--<label for="message" class="form_left"></label>-->
+                   
                     <textarea id="message" class="" name="message" style="min-height:100px"
                               required="required" placeholder="<?= $this->content["your_message"] ?>"><?php if (isset($_POST["message"])) echo(htmlspecialchars($_POST['message'])) ?></textarea>
                     <div style="clear: both;"></div>
