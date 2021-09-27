@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <base href="www.ajezek.cz"/>
 
-
+<style>
+    .hfvisunfydsgui {
+        color:blue;
+    }
+</style>
     <?php
     //aby google pagespeed nevidel analytics a nemel kecy...
     if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Speed Insights') === false): ?>
@@ -66,6 +70,10 @@
             <a href="https://ajezek.cz/<?= $ln ?>" class="menu__odkaz  menu__polozka"
                style="float:right"><img src="/icon/<?= $ln ?>_flag.png" alt="<?= $ln ?> flag" width="32"/></a>
 
+            <div class="menu__polozka" style="float: right;"><a href="https://github.com/adamjezek98"
+                                                                class="menu__polozka" target="_blank"> <i
+                            class="fa fa-github twitter-icon" aria-hidden="true" style="color: #000"></i></a></div>
+
             <div class="menu__polozka" style="float: right;"><a href="https://twitter.com/adamjezek98"
                                                                 class="menu__polozka" target="_blank"> <i
                             class="fa fa-twitter twitter-icon" aria-hidden="true"></i></a></div>
@@ -83,18 +91,18 @@
 </article>
 
 <footer>
-    <div style="padding-right: 20px;"> &copy; Adam Ježek 2017, mail@ajezek.cz, responzive menu by
-        SogoCZE
+    <div style="padding-right: 20px;"> &copy; Adam Ježek 2017, mail@ajezek.cz
     </div>
 </footer>
 </body>
 
+
+</html>
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.css"/>
-<link rel="stylesheet" type="text/css" href="/css/FontAwesome/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/FontAwesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
 <script src="/js/jQuery.min.js"></script>
 
 <script type="text/javascript" src="/js/menu.js"></script>
 <script src="/js/smooth-scroll.js"></script>
-</html>

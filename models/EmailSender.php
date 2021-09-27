@@ -15,13 +15,13 @@ class EmailSender
 
 
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            $ok = false;
+            //$ok = false;
 
         }
 
         if ($_POST["antispam"] != "4") {
 
-            $ok = false;
+            //$ok = false;
         }
 
 
@@ -35,8 +35,8 @@ class EmailSender
             Sender: " . $name ."; ". $email . "\n<br/>
             Sent ". date('d.m.Y h:i:s a', time());
             $_POST = array();
-            $_POST["email_ok"] = true;
-            $this->send("mail@ajezek.cz", "Contact form - message from " . $name, $message, $email);
+            $_POST["email_ok"] = false;
+            //$this->send("mail@ajezek.cz", "Contact form - message from " . $name, $message, $email);
             if($this->lang == "cs"){
                 $confirmation = "Vaše zpráva pro mail@ajezek.cz byla doručena";
                 $bodyconfirm = $confirmation ."<br/>Vaše zpráva:<br/>";
@@ -44,7 +44,7 @@ class EmailSender
                 $confirmation = "Your message for mail@ajezek.cz was delivered";
                 $bodyconfirm = $confirmation ."<br/>VYour message:<br/>";
             }
-            $this->send($email,$confirmation,$bodyconfirm.$message,$email);
+            //$this->send($email,$confirmation,$bodyconfirm.$message,$email);
 
         } else {
             $_POST["email_ok"] = false;
